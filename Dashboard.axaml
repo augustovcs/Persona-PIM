@@ -1,0 +1,112 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaApplication1.DashboardWindow"
+        Title="Dashboard Demo 0.1"
+        Width="1000" Height="700"
+        Background="#121212">
+    
+    <Grid>
+        <!-- Main Layout Grid -->
+        <Grid ColumnDefinitions="250,*" RowDefinitions="*,2,*">
+            <!-- Column 1 (Left Panel) -->
+            <Border Grid.Column="0" Grid.RowSpan="3"
+                    Background="#1E1E1E">
+                <StackPanel Margin="20" Spacing="25">
+                    <!-- Logo/Section (sem borda) -->
+                    <TextBlock Text="Explore your potential." 
+                               FontSize="18"
+                               Foreground="#B0B0B0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,0,0,20"/>
+                    
+                    <!-- Navigation Buttons -->
+                    <StackPanel Spacing="10">
+                        <!-- Dashboard -->
+                        <Button Classes="NavButton">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="🏠" FontSize="16"/>
+                                <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        
+                        <!-- Analytics -->
+                        <Button Classes="NavButton">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="📊" FontSize="16"/>
+                                <TextBlock Text="Analytics" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        
+                        <!-- Personal AI -->
+                        <Button Classes="NavButton">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="🤖" FontSize="16"/>
+                                <TextBlock Text="Personal AI" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        
+                        <!-- Settings -->
+                        <Button Classes="NavButton">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="⚙️" FontSize="16"/>
+                                <TextBlock Text="Settings" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <!-- Horizontal Divider -->
+            <Rectangle Grid.Column="1" Grid.Row="1"
+                       Fill="#333333"
+                       Height="2"/>
+            
+            <!-- Column 2 (Top Right) -->
+            <Border Grid.Column="1" Grid.Row="0"
+                    Background="#252526"
+                    Margin="0,0,0,1">
+                <TextBlock Text="Section 1" 
+                           Foreground="#D0D0D0"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+            </Border>
+            
+            <!-- Column 3 (Bottom Right) -->
+            <Border Grid.Column="1" Grid.Row="2"
+                    Background="#252526">
+                <TextBlock Text="Section 2" 
+                           Foreground="#D0D0D0"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+            </Border>
+        </Grid>
+    </Grid>
+
+    <Window.Styles>
+        <!-- Navigation Button Style -->
+        <Style Selector="Button.NavButton">
+            <Setter Property="Foreground" Value="#D0D0D0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        
+        <!-- Hover Effects -->
+        <Style Selector="Button.NavButton:pointerover">
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+        </Style>
+        
+        <!-- Global Text Styles -->
+        <Style Selector="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI, Arial"/>
+        </Style>
+    </Window.Styles>
+</Window>

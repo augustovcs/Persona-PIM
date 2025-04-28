@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaApplication1.LogInWindow"
+        Title="Log In Demo 0.1"
+        Width="450" Height="350"
+        Background="#1E1E1E" 
+        FontFamily="Segoe UI">
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="15">
+        <TextBlock Text="Log In" Foreground="#D0D0D0" FontSize="24" HorizontalAlignment="Center"/>
+        <TextBlock Name="ErrorTextBlock" Foreground="Red"/>
+        <TextBlock Name="ResultTextBlock" Foreground="#D0D0D0"/>
+        
+        <!-- Campos de entrada -->
+        <TextBox x:Name="PasswordTextBox"  Width="250" Foreground="#D0D0D0" Background="#252526" BorderBrush="#444444" Height="35" PasswordChar="*"/>
+        
+        <!-- Botões -->
+        <Button Content="Log In" Width="250" Height="40" Background="#333333" Foreground="#FFFFFF" Click="OnLogInClick"/>
+        <Button Content="Change Password" Width="250" Height="40" Background="#444444" Foreground="#FFFFFF" Click="OnChangePasswordClick"/>
+        
+        <!-- Área de confirmação (inicialmente oculta) -->
+        <StackPanel Name="ConfirmPanel" Spacing="10" IsVisible="False">
+            <TextBlock Text="Are you sure you want to change your password?" Foreground="#D0D0D0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                <Button Content="Yes" Width="80" Click="OnConfirmYes"/>
+                <Button Content="No" Width="80" Click="OnConfirmNo"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

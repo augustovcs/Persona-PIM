@@ -1,0 +1,103 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaApplication1.SignUpWindow"
+        Title="Sign up Demo 0.2"
+        Width="450" Height="350"
+        Background="#1E1E1E" 
+        FontFamily="Segoe UI">
+    
+    <Grid>
+        <!-- Main Content Card -->
+        <Border Width="380" Height="280"
+                Background="#2A2A2A"
+                CornerRadius="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                BorderBrush="#444444"
+                BorderThickness="1">
+            
+            <StackPanel Margin="30" Spacing="15">
+                <!-- Header -->
+                <TextBlock Text="Your first time? Sign up!" 
+                          FontSize="18"
+                          Foreground="#FFFFFF"
+                          HorizontalAlignment="Center"/>
+                
+                <!-- Password Input -->
+                <StackPanel Margin="0,20,0,0" Spacing="5">
+                    <TextBlock Text="Enter 4-digit access code:" 
+                              Foreground="#CCCCCC"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Margin="5"
+                              FontSize="12"/>
+                    
+                    <TextBox x:Name="PasswordTextBox"
+                             PasswordChar="•"
+                             MaxLength="4"
+                             FontSize="24"
+                             HorizontalAlignment="Center"
+                             Width="120"
+                             TextAlignment="Center"
+                             Background="#3A3A3A"
+                             Foreground="White"
+                             CaretBrush="White"
+                             BorderThickness="0"
+                             Padding="5"/>
+                </StackPanel>
+                
+                <!-- Status Messages -->
+                <TextBlock x:Name="ErrorTextBlock"
+                          Foreground="#FF5C5C"
+                          FontSize="12"
+                          HorizontalAlignment="Center"
+                          TextWrapping="Wrap"/>
+                
+                <!-- Submit Button -->
+                <Button Content="REGISTER"
+                        Click="OnSubmitClick"
+                        Margin="-30"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Width="110"
+                        Height="25"
+                        Background="#3A3A3A"
+                        Foreground="White"
+                        BorderThickness="0"
+                        CornerRadius="5"
+                        FontSize="13"/>
+                
+                <TextBlock x:Name="ResultTextBlock"
+                          Foreground="#CCCCCC"
+                          FontSize="12"
+                          HorizontalAlignment="Center"
+                          TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+    <Window.Styles>
+        <!-- TextBox Styling -->
+        <Style Selector="TextBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="SelectionBrush" Value="#606060"/>
+        </Style>
+        
+        <Style Selector="TextBox:focus">
+            <Setter Property="Background" Value="#444444"/>
+        </Style>
+        
+        <!-- Button Styling -->
+        <Style Selector="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#505050"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Styles>
+</Window>
