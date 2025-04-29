@@ -14,16 +14,25 @@ namespace AvaloniaApplication1
 {
     public partial class LogInWindow : Window
     {
+        private string _savedUsername;
+        private string _savedPassword;
         
         public LogInWindow()
         {
             InitializeComponent();
-            
+            UsernameTextBox = this.FindControl<TextBox>("UsernameTextBox");
             PasswordTextBox = this.FindControl<TextBox>("PasswordTextBox");
             ErrorTextBlock = this.FindControl<TextBlock>("ErrorTextBlock");
             ResultTextBlock = this.FindControl<TextBlock>("ResultTextBlock");
-            ConfirmPanel = this.FindControl<StackPanel>("ConfirmPanel");
-
+            ConfirmPanel = this.FindControl<Border>("ConfirmPanel");
+            
+            
+            var savedCredentials = GetSavedCredentials();
+            if (savedCredentials != null)
+            {
+                _savedUsername = savedCredentials.Username;
+                _savedPassword = savedCredentials.Password;
+            }
         }
 
         private void InitializeComponent()
@@ -36,91 +45,102 @@ namespace AvaloniaApplication1
         {
             try
             {
+                
+                var username = UsernameTextBox.Text;
                 var password = PasswordTextBox.Text;
                 ClearMessages();
 
-                // Validações básicas
-                if (string.IsNullOrEmpty(password))
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                    
                 {
-                    ErrorTextBlock.Text = "Password are required!";
+                    ErrorTextBlock.Text = "Username and password are required!";
+                    return;
+                }
+                
+                var savedCredentials = GetSavedCredentials();
+                if (savedCredentials == null)
+                {
+                    ErrorTextBlock.Text = "Error: Credentials not found!";
                     return;
                 }
 
-                // Obtém a senha salva (ou null se não existir)
-                var savedPassword = GetSavedPassword();
-
-
-                if (password != savedPassword)
+                if (password != savedCredentials.Password || username != savedCredentials.Username)
                 {
-                    ErrorTextBlock.Text = "Invalid password!";
+                    ErrorTextBlock.Text = "Error: Invalid credentials!";
                     return;
-                }
-
+                } 
+                
                 OpenDashboard();
+                
             }
             catch (Exception ex)
             {
                 ErrorTextBlock.Text = $"Error: {ex.Message}";
             }
         }
-
+        
         private void ClearMessages()
         {
             ErrorTextBlock.Text = string.Empty;
             ResultTextBlock.Text = string.Empty;
 
         }
-
-        private string GetSavedPassword()
+        
+        
+        private Credentials GetSavedCredentials()
         {
             var configPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                ".dashboardanalysis", // Pasta oculta no Linux
+                ".dashboardanalysis", 
                 "FirstTimeCredentials.json"
             );
 
             if (!File.Exists(configPath))
-                return null; // Retorna null se o arquivo não existir
+                return null; 
 
             try
             {
                 var json = File.ReadAllText(configPath);
-                var credentials = JsonSerializer.Deserialize<Credentials>(json);
-                return credentials?.Password;
+                return JsonSerializer.Deserialize<Credentials>(json);
             }
             catch
             {
                 return null; 
             }
         }
-
+        
         private class Credentials
         {
+            
             public string Password { get; set; }
+            public string Username { get; set; }
+
         }
-
-
+        
         private void OnChangePasswordClick(object sender, RoutedEventArgs e)
         {
-            // Mostra o painel de confirmação
-            ConfirmPanel.IsVisible = true;
+            if (Application.Current?.ApplicationLifetime is
+                Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = new ChangePasswordWindow();
+                desktop.MainWindow.Show();
+            }
         }
 
         private void OnConfirmYes(object sender, RoutedEventArgs e)
         {
-            ConfirmPanel.IsVisible = false; // Esconde o painel
-            OpenSignUpWindow(); // Abre a tela de cadastro
+            ConfirmPanel.IsVisible = false; 
+            OpenSignUpWindow(); 
         }
 
         private void OnConfirmNo(object sender, RoutedEventArgs e)
         {
-            ConfirmPanel.IsVisible = false; // Esconde o painel
+            ConfirmPanel.IsVisible = false; 
         }
         
 
         private void OpenDashboard()
         {
-            // Redireciona para a tela principal
             if (Application.Current?.ApplicationLifetime is
                 Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
             {
@@ -132,7 +152,6 @@ namespace AvaloniaApplication1
 
         private void OpenSignUpWindow()
         {
-            // Redireciona para a tela de cadastro para alterar a senha
             if (Application.Current?.ApplicationLifetime is
                 Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
             {

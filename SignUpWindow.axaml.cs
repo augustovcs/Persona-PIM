@@ -19,17 +19,21 @@ public partial class SignUpWindow : Window
         InitializeComponent();
     }
 
-    private void OnSubmitClick(object? sender, RoutedEventArgs e)
+    public void OnSubmitClick(object? sender, RoutedEventArgs e)
     {
         try
-        {
+        {   
+            var username = UsernameTextBox.Text ?? string.Empty;
             var password = PasswordTextBox.Text ?? string.Empty;
             ClearMessages();
-
+            
             if (!ValidatePassword(password, out var cleanPassword))
                 return;
 
-            _saveCredentials(cleanPassword);
+            if (!ValidateUsername(username, out var cleanUsername))
+                return;
+
+            _saveCredentials(cleanPassword, cleanUsername);
             _showDashboard();
 
         }
@@ -46,6 +50,27 @@ public partial class SignUpWindow : Window
 
     }
 
+    
+
+    private bool ValidateUsername(string username, out string cleanUsername)
+    {
+        cleanUsername = new string(username.Where(c => char.IsLetterOrDigit(c)).ToArray());
+
+        if (string.IsNullOrEmpty(username))
+        {
+            ResultTextBlock.Text = "Username cannot be empty";
+            return false;
+        }
+
+        if (cleanUsername.Length < 10)
+        {
+            ErrorTextBlock.Text = "Username must be at least 10 characters";
+            return false;
+        }
+
+        return true;
+
+    }
     private bool ValidatePassword(string password, out string cleanPassword)
     {
 
@@ -66,21 +91,19 @@ public partial class SignUpWindow : Window
         return true;
     }
 
-    private void _saveCredentials(string password)
+    private void _saveCredentials(string password, string username)
     {
         try
         {
             var configPath = GetConfigPath();
-            Directory.CreateDirectory(configPath);  // Cria o diretório se não existir
+            Directory.CreateDirectory(configPath);  
 
-            var credentials = new Credentials { Password = password };
+            var credentials = new Credentials { Password = password, Username = username};
             var jsonString = JsonSerializer.Serialize(credentials);
 
-            // Escreve em um arquivo temporário primeiro (evita corrupção)
             var tempFilePath = Path.Combine(configPath, "temp_" + ConfigFileName);
             File.WriteAllText(tempFilePath, jsonString);
 
-            // Renomeia para o arquivo final (operação atômica)
             var finalFilePath = GetCredentialsFilePath();
             File.Move(tempFilePath, finalFilePath, overwrite: true);
         }
@@ -90,25 +113,24 @@ public partial class SignUpWindow : Window
         }
     }
 
-    private string GetPassword()
+    private Credentials GetCredentials()
     {
         var filePath = GetCredentialsFilePath();
     
         if (!File.Exists(filePath))
-            return string.Empty;  // Retorna vazio se o arquivo não existir
+            return new Credentials();
 
         try
         {
             var json = File.ReadAllText(filePath);
-            var credentials = JsonSerializer.Deserialize<Credentials>(json);
-            return credentials?.Password ?? string.Empty;
+            return JsonSerializer.Deserialize<Credentials>(json) ?? new Credentials();
         }
         catch
         {
-            return string.Empty;  // Se o arquivo estiver corrompido
+            return new Credentials();  
         }
     }
-
+    
     private string GetConfigPath()
     {
         // Retorna o caminho do DIRETÓRIO (não do arquivo)
@@ -141,7 +163,9 @@ public partial class SignUpWindow : Window
 
     private class Credentials
     {
-        public string Password { get; set; }
+        public string Password { get; set;}
+        public string Username { get; set; }
+        
     }
 }
 

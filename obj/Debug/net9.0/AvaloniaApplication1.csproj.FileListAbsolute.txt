@@ -69,3 +69,4 @@
 /home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/bin/Debug/net9.0/ReactiveUI.dll
 /home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/bin/Debug/net9.0/Splat.dll
 /home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/bin/Debug/net9.0/System.Reactive.dll
+/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/obj/Debug/net9.0/AvaloniaApplication1.sourcelink.json

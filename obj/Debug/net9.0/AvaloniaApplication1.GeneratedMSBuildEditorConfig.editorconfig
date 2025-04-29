@@ -24,6 +24,9 @@ build_property.EnableCodeStyleSeverity =
 [/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/ChangePasswordWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/Dashboard.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
