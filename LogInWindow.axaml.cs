@@ -89,11 +89,8 @@ namespace AvaloniaApplication1
         
         private Credentials GetSavedCredentials()
         {
-            var configPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                ".dashboardanalysis", 
-                "FirstTimeCredentials.json"
-            );
+            var configPath = SignUpWindow.GetCredentialsFilePath();
+            
 
             if (!File.Exists(configPath))
                 return null; 

@@ -7,6 +7,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using System.Text.Json;
+using Avalonia.Dialogs;
 
 namespace AvaloniaApplication1;
 
@@ -33,7 +34,7 @@ public partial class SignUpWindow : Window
             if (!ValidateUsername(username, out var cleanUsername))
                 return;
 
-            _saveCredentials(cleanPassword, cleanUsername);
+            SaveCredentials(cleanPassword, cleanUsername);
             _showDashboard();
 
         }
@@ -91,7 +92,7 @@ public partial class SignUpWindow : Window
         return true;
     }
 
-    private void _saveCredentials(string password, string username)
+    public static void SaveCredentials(string password, string username)
     {
         try
         {
@@ -113,7 +114,7 @@ public partial class SignUpWindow : Window
         }
     }
 
-    private Credentials GetCredentials()
+    public static Credentials GetCredentials()
     {
         var filePath = GetCredentialsFilePath();
     
@@ -131,7 +132,7 @@ public partial class SignUpWindow : Window
         }
     }
     
-    private string GetConfigPath()
+    public static string GetConfigPath()
     {
         // Retorna o caminho do DIRETÓRIO (não do arquivo)
         return Path.Combine(
@@ -140,7 +141,7 @@ public partial class SignUpWindow : Window
         );
     }
 
-    private string GetCredentialsFilePath()
+    public static string GetCredentialsFilePath()
     {
         // Retorna o caminho COMPLETO do arquivo JSON
         return Path.Combine(GetConfigPath(), ConfigFileName);
@@ -160,13 +161,7 @@ public partial class SignUpWindow : Window
         });
     }
 
-
-    private class Credentials
-    {
-        public string Password { get; set;}
-        public string Username { get; set; }
-        
-    }
+    
 }
 
 

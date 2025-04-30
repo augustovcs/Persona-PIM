@@ -3,13 +3,13 @@
         x:Class="AvaloniaApplication1.SignUpWindow"
         Title="Sign up Demo 0.3"
         Width="450" Height="350"
-        Background="#1E1E1E" 
+        Background="#252525" 
         FontFamily="Segoe UI">
     
     <Grid>
         <!-- Main Content Card -->
         <Border Width="380" Height="280"
-                Background="#2A2A2A"
+                Background="#252525"
                 CornerRadius="10"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
