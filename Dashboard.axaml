@@ -66,11 +66,13 @@
             <Border Grid.Column="1" Grid.Row="0"
                     Background="#252526"
                     Margin="0,0,0,1">
-                <TextBlock Text="Section 1" 
+                <TextBlock x:Name="CounterBlock" Text="25:00"
+                           Margin="0,-60,0,0"
                            Foreground="#D0D0D0"
-                           FontSize="16"
+                           FontSize="68"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
+              
             </Border>
             
             <!-- Column 3 (Bottom Right) -->
@@ -82,6 +84,36 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
             </Border>
+            
+            <Button Grid.Column="1" Grid.Row="0" Content="START"
+                    Click="Button_OnClick"
+                    Margin="-100,0,0,-180"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="80"
+                    Height="35"
+                    Background="#3A3A3A"
+                    Foreground="White"
+                    BorderThickness="0"
+                    CornerRadius="5"
+                    FontSize="16"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="STOP"
+                    Click="Button_StopClick"
+                    Margin="-0,0,-100,-180"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="80"
+                    Height="35"
+                    Background="#3A3A3A"
+                    Foreground="White"
+                    BorderThickness="0"
+                    CornerRadius="5"
+                    FontSize="16"/>
+
         </Grid>
     </Grid>
 
