@@ -1746,19 +1746,19 @@
     ]
   },
   "packageFolders": {
-    "/home/augusto/.nuget/packages/": {}
+    "C:\\Users\\darri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/AvaloniaApplication1.csproj",
+      "projectUniqueName": "C:\\Users\\darri\\dashboardanalytics\\AvaloniaApplication1.csproj",
       "projectName": "AvaloniaApplication1",
-      "projectPath": "/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/AvaloniaApplication1.csproj",
-      "packagesPath": "/home/augusto/.nuget/packages/",
-      "outputPath": "/home/augusto/Documents/sandboxcsharp/AvaloniaApplication1/AvaloniaApplication1/obj/",
+      "projectPath": "C:\\Users\\darri\\dashboardanalytics\\AvaloniaApplication1.csproj",
+      "packagesPath": "C:\\Users\\darri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\darri\\dashboardanalytics\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/augusto/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\darri\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -1780,9 +1780,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -1829,7 +1829,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/augusto/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\darri\\.dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
