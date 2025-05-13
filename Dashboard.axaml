@@ -63,6 +63,7 @@
                        Height="2"/>
             
             <!-- Column 2 (Top Right) -->
+            
             <Border Grid.Column="1" Grid.Row="0"
                     Background="#252526"
                     Margin="0,0,0,1">
@@ -73,16 +74,6 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
               
-            </Border>
-            
-            <!-- Column 3 (Bottom Right) -->
-            <Border Grid.Column="1" Grid.Row="2"
-                    Background="#252526">
-                <TextBlock Text="Section 2" 
-                           Foreground="#D0D0D0"
-                           FontSize="16"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
             </Border>
             
             <Button Grid.Column="1" Grid.Row="0" Content="START"
@@ -113,11 +104,188 @@
                     BorderThickness="0"
                     CornerRadius="5"
                     FontSize="16"/>
+            
+            <TextBlock x:Name="FirstTimerBreak"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       Margin="0,10,0,-90"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="16"/>
+            <TextBlock
+                Grid.Column="1"
+                Grid.Row="0"
+                Margin="0,15,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Text="Pomodoro Timer | Manage your time."
+                Foreground="#D0D0D0"
+                FontSize="28"/>
+            <!-- Column 3 (Bottom Right) - Compact Trello-style Todo List -->
+<Border Grid.Column="1" Grid.Row="2"
+        Background="#252526">
+    <Grid RowDefinitions="Auto,*">
+        <!-- Title Section -->
+        <TextBlock Text="To-do List | Manage your task."
+                   Foreground="#D0D0D0"
+                   FontSize="28"
+                   HorizontalAlignment="Center"
+                   Margin="0,15,0,20"/>
+        
+        <!-- Todo List Content -->
+        <Grid Grid.Row="1" Margin="10,0,10,10">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Center" 
+                           Spacing="15">
+                    
+                    <!-- TO DO Column -->
+                    <Border Background="#2D2D2D" 
+                            CornerRadius="6" 
+                            Width="220"
+                            Classes="KanbanColumn">
+                        <Grid RowDefinitions="Auto,*">
+                            <!-- Column Header -->
+                            <Border Background="#333333" 
+                                    CornerRadius="6,6,0,0" 
+                                    Padding="10,8">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📝 TO DO" 
+                                               Foreground="#D0D0D0" 
+                                               FontSize="13"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text=" (3)" 
+                                               Foreground="#808080" 
+                                               FontSize="13"
+                                               Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Border>
 
+                            <!-- Tasks List -->
+                            <ScrollViewer Grid.Row="1" 
+                                        Margin="5" 
+                                        VerticalScrollBarVisibility="Auto">
+                                <ItemsControl x:Name="TodoItems" ItemTemplate="{StaticResource TaskItemTemplate}">
+                                    <StackPanel x:Name="AddTaskPanel" Spacing="5">
+                                        <!-- Add Task Button -->
+                                        <Button x:Name="AddTaskButton"
+                                                Classes="AddTaskButton"
+                                                Click="AddTask_Click"
+                                                HorizontalAlignment="Stretch"
+                                                Height="30"
+                                                IsVisible="True">
+                                            <TextBlock Text="+ Add Task" 
+                                                     FontSize="12"
+                                                     Foreground="#D0D0D0"/>
+                                        </Button>
+                                        <TextBox x:Name="NewTaskTextBox"
+                                                 Watermark="Enter task and press Enter"
+                                                 Height="30"
+                                                 Background="#3A3A3A"
+                                                 Foreground="#D0D0D0"
+                                                 BorderThickness="0"
+                                                 CornerRadius="3"
+                                                 Padding="8,4"
+                                                 FontSize="12"
+                                                 IsVisible="False"
+                                                 KeyDown="NewTaskTextBox_KeyDown"/>
+
+                                        
+                                    </StackPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+
+                    <!-- IN PROGRESS Column -->
+                    <Border Background="#2D2D2D" 
+                            CornerRadius="6" 
+                            Width="220"
+                            Classes="KanbanColumn">
+                        <Grid RowDefinitions="Auto,*">
+                            <Border Background="#333333" 
+                                    CornerRadius="6,6,0,0" 
+                                    Padding="10,8">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🔄 IN PROGRESS" 
+                                               Foreground="#D0D0D0" 
+                                               FontSize="13"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text=" (2)" 
+                                               Foreground="#808080" 
+                                               FontSize="13"
+                                               Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <ScrollViewer Grid.Row="1" 
+                                        Margin="5" 
+                                        VerticalScrollBarVisibility="Auto">
+                                <ItemsControl x:Name="InProgressItems"
+                                              ItemTemplate="{StaticResource TaskItemTemplate}"
+                                              />
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+
+                    <!-- DONE Column -->
+                    <Border Background="#2D2D2D" 
+                            CornerRadius="6" 
+                            Width="220"
+                            Classes="KanbanColumn">
+                        <Grid RowDefinitions="Auto,*">
+                            <Border Background="#333333" 
+                                    CornerRadius="6,6,0,0" 
+                                    Padding="10,8">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="✅ DONE" 
+                                               Foreground="#D0D0D0" 
+                                               FontSize="13"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text=" (1)" 
+                                               Foreground="#808080" 
+                                               FontSize="13"
+                                               Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <ScrollViewer Grid.Row="1" 
+                                        Margin="5" 
+                                        VerticalScrollBarVisibility="Auto">
+                                <ItemsControl x:Name="DoneItems"
+                                              ItemTemplate="{StaticResource TaskItemTemplate}"
+                                              />
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Border>
         </Grid>
     </Grid>
-
+    
+    
     <Window.Styles>
+        
+        
+        
+        <!-- Animations -->
+        <Style Selector=":is(Control).FadeIn">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        
         <!-- Navigation Button Style -->
         <Style Selector="Button.NavButton">
             <Setter Property="Foreground" Value="#D0D0D0"/>
@@ -130,6 +298,31 @@
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
         
+        <Style Selector="Button.Ghost">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="TextBox:focus">
+            <Setter Property="RenderTransform" Value="scale(1.01)"/>
+        </Style>
+        
         <!-- Hover Effects -->
         <Style Selector="Button.NavButton:pointerover">
             <Setter Property="Background" Value="#333333"/>
@@ -140,5 +333,22 @@
         <Style Selector="TextBlock">
             <Setter Property="FontFamily" Value="Segoe UI, Arial"/>
         </Style>
+        
+        <Style Selector="Border.Card">
+            <Setter Property="Background" Value="{DynamicResource BackgroundPrimary}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+            <Setter Property="BoxShadow" Value="{DynamicResource ShadowSmall}"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        
     </Window.Styles>
 </Window>

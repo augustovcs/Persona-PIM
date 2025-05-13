@@ -155,7 +155,7 @@ public partial class SignUpWindow : Window
 
         Dispatcher.UIThread.Post(() =>
         {
-            desktop.MainWindow = new DashboardWindow();
+            desktop.MainWindow = new LogInWindow();
             desktop.MainWindow.Show();
             Close();
         });

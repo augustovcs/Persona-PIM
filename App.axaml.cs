@@ -22,15 +22,12 @@ namespace AvaloniaApplication1
             {
                 desktop.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-                // Verifica se as credenciais existem
                 if (CredentialsExist())
                 {
-                    // Se as credenciais existirem, abre o LogInWindow
                     desktop.MainWindow = new LogInWindow();
                 }
                 else
                 {
-                    // Se as credenciais não existirem, abre o SignUpWindow
                     desktop.MainWindow = new SignUpWindow();
                 }
 
@@ -40,13 +37,8 @@ namespace AvaloniaApplication1
 
         private bool CredentialsExist()
         {
-            var path = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                "dashboardanalysis.json",  // O caminho onde você armazenou o arquivo de credenciais
-                "FirstTimeCredentials.json"
-            );
-
-            return File.Exists(path);  // Retorna true se o arquivo de credenciais existir
+            var path = SignUpWindow.GetCredentialsFilePath();
+            return File.Exists(path); 
         }
     }
 }

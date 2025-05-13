@@ -142,3 +142,9 @@ C:\Users\darri\dashboardanalytics\obj\Debug\net9.0\refint\Avalonia\AvaloniaAppli
 C:\Users\darri\dashboardanalytics\obj\Debug\net9.0\Avalonia.FDB175D9.Up2Date
 C:\Users\darri\dashboardanalytics\obj\Debug\net9.0\AvaloniaApplication1.genruntimeconfig.cache
 C:\Users\darri\dashboardanalytics\obj\Debug\net9.0\ref\AvaloniaApplication1.dll
+C:\Users\darri\dashboardanalytics\bin\Debug\net9.0\NAudio.dll
+C:\Users\darri\dashboardanalytics\bin\Debug\net9.0\NAudio.Asio.dll
+C:\Users\darri\dashboardanalytics\bin\Debug\net9.0\NAudio.Core.dll
+C:\Users\darri\dashboardanalytics\bin\Debug\net9.0\NAudio.Midi.dll
+C:\Users\darri\dashboardanalytics\bin\Debug\net9.0\NAudio.Wasapi.dll
+C:\Users\darri\dashboardanalytics\bin\Debug\net9.0\NAudio.WinMM.dll

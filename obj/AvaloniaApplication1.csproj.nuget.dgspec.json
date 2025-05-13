@@ -67,6 +67,10 @@
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.2.8, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
             }
           },
           "imports": [

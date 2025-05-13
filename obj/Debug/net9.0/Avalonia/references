@@ -32,6 +32,12 @@ C:\Users\darri\.dotnet\packs\Microsoft.NETCore.App.Ref\9.0.0\ref\net9.0\Microsof
 C:\Users\darri\.dotnet\packs\Microsoft.NETCore.App.Ref\9.0.0\ref\net9.0\Microsoft.Win32.Primitives.dll
 C:\Users\darri\.dotnet\packs\Microsoft.NETCore.App.Ref\9.0.0\ref\net9.0\Microsoft.Win32.Registry.dll
 C:\Users\darri\.dotnet\packs\Microsoft.NETCore.App.Ref\9.0.0\ref\net9.0\mscorlib.dll
+C:\Users\darri\.nuget\packages\naudio.asio\2.2.1\lib\netstandard2.0\NAudio.Asio.dll
+C:\Users\darri\.nuget\packages\naudio.core\2.2.1\lib\netstandard2.0\NAudio.Core.dll
+C:\Users\darri\.nuget\packages\naudio\2.2.1\lib\net6.0\NAudio.dll
+C:\Users\darri\.nuget\packages\naudio.midi\2.2.1\lib\netstandard2.0\NAudio.Midi.dll
+C:\Users\darri\.nuget\packages\naudio.wasapi\2.2.1\lib\netstandard2.0\NAudio.Wasapi.dll
+C:\Users\darri\.nuget\packages\naudio.winmm\2.2.1\lib\netstandard2.0\NAudio.WinMM.dll
 C:\Users\darri\.dotnet\packs\Microsoft.NETCore.App.Ref\9.0.0\ref\net9.0\netstandard.dll
 C:\Users\darri\.nuget\packages\reactiveui\20.1.1\lib\net8.0\ReactiveUI.dll
 C:\Users\darri\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
