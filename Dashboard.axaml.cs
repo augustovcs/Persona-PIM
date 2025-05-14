@@ -129,6 +129,10 @@ public partial class DashboardWindow : Window
         _todoItems.Add(new TodoItem("Do the dishes"));
         _todoItems.Add(new TodoItem("Do the laundry")); 
         _todoItems.Add(new TodoItem("Do your bed"));
+        
+        var todoList = this.FindControl<ItemsControl>("TodoList");
+        if (todoList != null) todoList.ItemsSource = _todoItems;
+        
     }
 
     private async void AddTask_Click(object? sender, RoutedEventArgs e)
@@ -145,13 +149,20 @@ public partial class DashboardWindow : Window
         }
     }
 
+
+    private int currentTaskIndex = 0;
     private void NewTaskTextBox_KeyDown(object? sender, KeyEventArgs e)
     {
         if (sender is TextBox textBox)
         {
             if (e.Key == Key.Enter && !string.IsNullOrWhiteSpace(textBox.Text))
             {
-                _todoItems.Add(new TodoItem(textBox.Text));
+                var taskBlock = this.FindControl<TextBlock>($"Task0{currentTaskIndex}");
+                if (taskBlock != null)
+                {
+                    taskBlock.Text = textBox.Text.ToUpper();
+                    currentTaskIndex = (currentTaskIndex + 1) % 6;
+                }
                 
                 textBox.Text = "";
                 textBox.IsVisible = false;
@@ -176,5 +187,6 @@ public partial class DashboardWindow : Window
         }    
         }
     }
+    
     
 }
