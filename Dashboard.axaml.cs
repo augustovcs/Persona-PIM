@@ -157,7 +157,7 @@ public partial class DashboardWindow : Window
         {
             if (e.Key == Key.Enter && !string.IsNullOrWhiteSpace(textBox.Text))
             {
-                var taskBlock = this.FindControl<TextBlock>($"Task0{currentTaskIndex}");
+                var taskBlock = this.FindControl<TextBlock>("test");
                 if (taskBlock != null)
                 {
                     taskBlock.Text = textBox.Text.ToUpper();

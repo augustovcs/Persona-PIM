@@ -53,6 +53,12 @@
                                 <TextBlock Text="Settings" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
+                        <Button Classes="NavButton">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="✏️" FontSize="16"/>
+                                <TextBlock Text="To-do Manager" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -195,22 +201,34 @@
                                     </StackPanel>
                                     
                                     <StackPanel x:Name="TaskListPanel" Spacing="8" Margin="8,10,0,0">
-                                        <TextBlock x:Name="Task00" Text="0" 
+                                        <StackPanel x:Name="ButtonPanel" Orientation="Horizontal" Spacing="5">
+                                            <Border Background="#FF2D2D30" CornerRadius="16" Padding="0">
+                                                <TextBlock x:Name="test" Text=" Testing " 
+                                                           FontSize="12"
+                                                           Foreground="#D0D0D0"
+                                                        />
+                                            </Border>
+                                            <Button Content="✏️" Width="40" Height="30" Background="#3A3A3A"/>
+                                            <Button Content="🗑️" Width="40" Height="30" Background="#3A3A3A"/>
+                                            <Button Content="✔️" Width="40" Height="30" Background="#3A3A3A"/>
+                                        </StackPanel>
+                                    
+                                        <TextBlock x:Name="Task00" Text=" " 
                                                    FontSize="12"
                                                    Foreground="#D0D0D0"/>
-                                        <TextBlock x:Name="Task01" Text="1" 
+                                        <TextBlock x:Name="Task01" Text=" " 
                                                    FontSize="12"
                                                    Foreground="#D0D0D0"/>
-                                        <TextBlock x:Name="Task02" Text="2" 
+                                        <TextBlock x:Name="Task02" Text=" " 
                                                    FontSize="12"
                                                    Foreground="#D0D0D0"/>
-                                        <TextBlock x:Name="Task03" Text="3" 
+                                        <TextBlock x:Name="Task03" Text=" " 
                                                    FontSize="12"
                                                    Foreground="#D0D0D0"/>
-                                        <TextBlock x:Name="Task04" Text="4" 
+                                        <TextBlock x:Name="Task04" Text=" " 
                                                    FontSize="12"
                                                    Foreground="#D0D0D0"/>
-                                        <TextBlock x:Name="Task05" Text="5" 
+                                        <TextBlock x:Name="Task05" Text=" " 
                                                    FontSize="12"
                                                    Foreground="#D0D0D0"
                                                    Margin="0,0,0,0"/>
